@@ -46,7 +46,7 @@ export default async function auth(req,res) {
         redirect: async (url, baseUrl) => {
           console.log("url",url);
           console.log("baseUrl",baseUrl);
-          baseUrl = "https://play.mobileschool.online";
+          baseUrl = "https://mobile-school-forum.vercel.app";
           return baseUrl;
         },
         session: async (session, token) => {
