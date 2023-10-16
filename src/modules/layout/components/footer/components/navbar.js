@@ -36,11 +36,11 @@ const tabs = [{
 	label: "เช็คอิน"
 }, {
 	index: 4,
-	route: "/noti",
-	className: "nav-footer-noti",
-	imageSrc: "/images/footer/ico-noti.png",
-	// icon: faSearch,
-	label: "แจ้งเตือน"
+	route: "/register/student/new",
+	className: "FcContacts ",
+	// imageSrc: "/images/footer/ico-noti.png",
+	icon: FcContacts,
+	label: "ใบสมัคร"
 }, {
 	index: 5,
 	route: "/search",
@@ -79,7 +79,7 @@ const FooterNavigation = (props) => {
 																<CustomImage className="mb-0" src={`${tab.imageSrc}`} width={52} height={52} />
 															);
 														case 4:
-															return (<CustomImage className="mb-0" src={`${tab.imageSrc}`} width={28} height={28} />);
+															return <FcContacts className="h1 mb-0" />;
 														case 5:
 															return <FcSearch className="h1 mb-0" />;
 														default:

@@ -14,8 +14,9 @@ const Error = ({ statusCode = 500 }) => {
 					<div className="container">
 						<div className="row justify-content-center">
 							<div className="col-md-12 text-center">
-								<span className="display-404 d-block">{statusCode}</span>
-								<div className="mb-4 lead">The page you are looking for was not found.</div>
+								{/*<span className="display-404 d-block">{statusCode}</span>*/}
+								<img src="./images/logo.png" />
+								<div className="mb-4 lead">กำลังกลับไปหน้าแรกครับ</div>
 								<a href="/" className="btn-link">
 									Back to Home
 								</a>

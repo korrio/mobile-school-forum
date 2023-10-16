@@ -156,7 +156,7 @@ const EditPostFormComponent = ({ editPost, isPreview }) => {
 										}}
 									/>
 								</div>
-								<div className="mb-3 col-md-12">
+								<div className="mb-3 col-md-12" style={{display:"none"}}>
 									<ImagePostForm
 										label="ภาพประกอบ (.png, .jpg, .jpeg .gif)"
 										id="image"
