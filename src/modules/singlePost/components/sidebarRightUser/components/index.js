@@ -25,7 +25,7 @@ const SideBarRightUserComponent = ({ postUser, listPostUser }) => {
 							width="55"
 							height="55"
 						/>
-						<h5 className="text-break mb-2">{postUser.user_name}</h5>
+						<h5 className="text-break mb-2">{postUser.first_name} {postUser.name} {postUser.last_name}</h5>
 					</CustomLink>
 					{postUser?.user_name !== user?.user_name && (
 						<div className="d-flex justify-content-center">
@@ -56,7 +56,7 @@ const SideBarRightUserComponent = ({ postUser, listPostUser }) => {
 							href={`/u/${postUser?.user_name}`}
 							className="text-decoration-none d-inline-block fw-bold ms-1"
 						>
-							{postUser?.user_name}
+							{postUser?.first_name} {postUser?.name} {postUser?.last_name}
 						</CustomLink>
 					</h5>
 				</div>

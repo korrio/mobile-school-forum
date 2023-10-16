@@ -37,6 +37,11 @@ const HomeComponent = ({ listPostPinned, listPost, pid }) => {
 								pidTab={pid[1]}
 								items={[
 									{
+										title: 'ล่าสุด',
+										slug: 'latest',
+										href: '/latest'
+									},
+									{
 										title: 'ชิม',
 										slug: 'latest',
 										href: `/c/taste/latest`
@@ -46,16 +51,16 @@ const HomeComponent = ({ listPostPinned, listPost, pid }) => {
 										slug: 'feed',
 										href: '/c/like/latest'
 									},
-									{
-										title: 'โชคโชน',
-										slug: 'feed',
-										href: '/c/enjoy/latest'
-									},
-									{
-										title: 'เชี่ยวชาญ',
-										slug: 'feed',
-										href: '/c/expertise/latest'
-									},
+									// {
+									// 	title: 'โชคโชน',
+									// 	slug: 'feed',
+									// 	href: '/c/enjoy/latest'
+									// },
+									// {
+									// 	title: 'เชี่ยวชาญ',
+									// 	slug: 'feed',
+									// 	href: '/c/expertise/latest'
+									// },
 									{
 										title: 'ใบงาน',
 										slug: 'feed',
@@ -66,11 +71,7 @@ const HomeComponent = ({ listPostPinned, listPost, pid }) => {
 									// 	slug: 'feed',
 									// 	href: '/feed'
 									// },
-									// {
-									// 	title: 'ล่าสุด',
-									// 	slug: 'latest',
-									// 	href: '/latest'
-									// },
+									
 								]}
 							/>
 					</div>
