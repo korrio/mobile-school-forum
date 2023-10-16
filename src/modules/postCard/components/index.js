@@ -153,7 +153,7 @@ const PostCardComponent = ({ post }) => {
 						<div className="lh-1">
 							<div className="d-flex align-items-center">
 								<CustomLink href={`/u/${post.user.user_name}`} className="text-decoration-none text-dark">
-									{getShortenUsername(post.user.user_name)}
+									{post.user.name}
 								</CustomLink>
 							</div>
 							<span className="text-muted small">{timeAgo(post.created_at)}</span>

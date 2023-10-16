@@ -22,8 +22,9 @@ export default function MePage() {
     const [liffObject, setLiffObject] = useState(null);
     const [liffError, setLiffError] = useState(null);
 
-    const { code } = router.query
-    console.log("code", code);
+    const { code,token } = router.query
+    console.log("the_code", code);
+    console.log("the_token", token);
 
     useEffect(() => {
 
@@ -40,10 +41,6 @@ export default function MePage() {
             ).then(async (response) => {
                 const theAccessToken = response.data.access_token;
 
-                console.log("theAccessToken", theAccessToken)
-
-                setAccessToken(theAccessToken)
-
                 const user = {
                     line_access_token: theAccessToken,
                     provider: 'line'
@@ -58,7 +55,19 @@ export default function MePage() {
 
         }
 
-    }, [code])
+        if (token) {
+
+                const user = {
+                    line_access_token: token,
+                    provider: 'line'
+                };
+                handleSocialLogin(user);
+
+        }
+
+
+
+    }, [code,token])
 
     const handleSocialLogin = async (user) => {
         console.log("user Handle", user)
@@ -72,7 +81,7 @@ export default function MePage() {
             if (response.data) {
                 setCookie('token', response.data.data.access_token);
                 showToast.success('เข้าสู่ระบบสำเร็จแล้ว');
-                router.push('/register/student');
+                router.push('/settings');
             }
         } catch (error) {
             showToast.error('ไม่สามารถเข้าสู่ระบบได้ กรุณาลองใหม่อีกครั้ง');
