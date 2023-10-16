@@ -30,7 +30,7 @@ const httpRequest = {
 				Accept: 'application/json',
 				'Content-Type': 'application/x-www-form-urlencoded',
 				Authorization: 'Bearer ' + token,
-				'Origin':'https://play.mobileschool.online'
+				'Origin':'https://mobile-school-forum.vercel.app'
 			},
 			data: data2
 		});
