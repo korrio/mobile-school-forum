@@ -15,28 +15,28 @@ module.exports = (phase) => {
 		WEBSITE_URL: (() => {
 			if (isDev) return 'http://localhost:3000';
 			if (isProd) {
-				return 'https://mobile-school-forum.vercel.app';
+				return 'https://play.mobileschool.online';
 			}
-			if (isStaging) return 'https://mobile-school-forum.vercel.app';
+			if (isStaging) return 'https://play.mobileschool.online';
 			return 'RESTURL_SPEAKERS:not (isDev,isProd && !isStaging,isProd && isStaging)';
 		})(),
 		API_URL: (() => {
 			// if (isDev) return 'https://cdn.mobileschool.online/api';
 			// if (isProd) return 'https://cdn.mobileschool.online/api';
 			// if (isStaging) return 'https://cdn.mobileschool.online/api'
-			if (isDev) return 'https://api-mobile-school-forum.vercel.app/api';
+			if (isDev) return 'https://api-play.mobileschool.online/api';
 			// if (isDev) return 'http://localhost:8000/api';
-			if (isProd) return 'https://api-mobile-school-forum.vercel.app/api';
-			if (isStaging) return 'https://api-mobile-school-forum.vercel.app/api';
+			if (isProd) return 'https://api-play.mobileschool.online/api';
+			if (isStaging) return 'https://api-play.mobileschool.online/api';
 			return 'RESTURL_SESSIONS:not (isDev,isProd && !isStaging,isProd && isStaging)';
 		})(),
 		IMAGES_URL: (() => {
 			// 			if (isDev) return 'https://cdn.mobileschool.online/public/images';
 			// if (isProd) return 'https://cdn.mobileschool.online/public/images';
 			// if (isStaging) return 'https://cdn.mobileschool.online/public/images';
-			if (isDev) return 'https://cdn-mobile-school-forum.vercel.app/images';
-			if (isProd) return 'https://cdn-mobile-school-forum.vercel.app/images';
-			if (isStaging) return 'https://cdn-mobile-school-forum.vercel.app/images';
+			if (isDev) return 'https://cdn-play.mobileschool.online/images';
+			if (isProd) return 'https://cdn-play.mobileschool.online/images';
+			if (isStaging) return 'https://cdn-play.mobileschool.online/images';
 			return 'RESTURL_SESSIONS:not (isDev,isProd && !isStaging,isProd && isStaging)';
 		})(),
 		LIMIT_PAGE: {
@@ -67,7 +67,7 @@ module.exports = (phase) => {
 		env,
 		reactStrictMode: true,
 		images: {
-			domains: ['localhost', 'cdn-mobile-school-forum.vercel.app', 'cdn.mobileschool.online', 'api-mobile-school-forum.vercel.app','profile.line-scdn.net'],
+			domains: ['localhost', 'cdn-play.mobileschool.online', 'cdn.mobileschool.online', 'api-play.mobileschool.online','profile.line-scdn.net'],
 			unoptimized: true,
 		},
 		i18n: {
