@@ -66,7 +66,7 @@ const SearchComponent = () => {
 						pidTab={type}
 						items={[
 							{
-								title: 'ผลงานของเพื่อน',
+								title: 'งานของเพื่อน',
 								slug: 'post',
 								href: `/search?q=${q}&type=post`
 							},
@@ -83,7 +83,7 @@ const SearchComponent = () => {
 							// },
 							user
 								? {
-										title: 'ผลงานของฉัน',
+										title: 'งานของฉัน',
 										slug: 'my_post',
 										href: `/search?q=${q}&type=my_post`
 								  }
@@ -142,7 +142,7 @@ const SearchComponent = () => {
 						</div>
 					</div>
 					{!error?.response?.data?.success && error?.response?.data?.error?.status === 422 ? (
-						<EmptyBoxComponent text="Please enter a search keyword" />
+						<EmptyBoxComponent text="กรอกคีย์เวิร์ดหรือคำค้นที่ต้องการค้นหา" />
 					) : (
 						<>
 							{(type === 'post' || (type === 'my_post' && user)) && <ListPostComponent listPost={listSearch} />}
