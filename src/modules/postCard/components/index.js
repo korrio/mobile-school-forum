@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaRegComment } from 'react-icons/fa';
 
+import ReactMarkdownComponent from '@/common/components/ReactMarkdown/components';
+
 import CustomImage from '@/common/components/CustomImage/components';
 import CustomLink from '@/common/components/CustomLink/components';
 import timeAgo from '@/common/utils/timeAgo';
@@ -20,6 +22,12 @@ import { FcAssistant } from 'react-icons/fc';
 
 import { useWeb3Context } from '@/common/context'
 
+// import createDOMPurify from 'dompurify'
+// import { JSDOM } from 'jsdom'
+
+// const window = (new JSDOM('')).window
+// const DOMPurify = createDOMPurify(window)
+
 const getShortenUsername = (account) => {
 	if (account.length > 12)
 		return `${account.slice(0, 4)}....${account.slice(
@@ -29,6 +37,18 @@ const getShortenUsername = (account) => {
 	else
 		return account;
 };
+
+function removeHtmlTags(str) { 
+    if ((str===null) || (str==='')) 
+        return false; 
+    else
+        str = str.toString(); 
+          
+    // Regular expression to identify HTML tags in 
+    // the input string. Replacing the identified 
+    // HTML tag with a null string. 
+    return str.replace(/<\/?[^>]+(>|$)/g, "");
+} 
 
 const PostCardComponent = ({ post }) => {
 	function rand(min, max) { // min and max included 
@@ -165,10 +185,23 @@ const PostCardComponent = ({ post }) => {
 						href={`/u/${post.user.user_name}/${post.slug}`}
 						className={`text-decoration-none text-dark card-title mb-2 d-block ${style.title_post_card}`}
 					>
-						<h5 className="fw-bold mb-0">{post.title}</h5>
+						<h4 className="fw-bold mb-0" style={{
+							fontSize: "32px"
+						}}>{post.title}</h4>
 					</CustomLink>
 					<div className="mb-1">
-						<p className="card-text mb-0 text-secondary excerpt">{post.excerpt}</p>
+						<p className="card-text mb-0 text-secondary excerpt">
+							<div>
+        { post.excerpt.indexOf('&lt;iframe') !== -1
+            ? (
+                ""
+              )
+            : post.excerpt
+          }
+
+      </div>
+							
+						</p>
 					</div>
 					<div className={`mb-2 ${style.tags}`}>
 						{post.tags.map((tag) => (
