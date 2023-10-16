@@ -20,7 +20,7 @@ const PostMetaComponent = ({ singlePost }) => {
 						alt={singlePost.data.user?.user_name}
 						layout="fixed"
 					/>
-					<span className="ms-2">{singlePost.data.user?.user_name}</span>
+					<span className="ms-2">{singlePost.data.user?.name}</span>
 				</CustomLink>
 				<span className="text-secondary">
 					<time dateTime={singlePost.data.created_at}>{timeFormat(singlePost.data.created_at)}</time>
