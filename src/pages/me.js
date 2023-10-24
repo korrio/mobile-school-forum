@@ -84,7 +84,7 @@ export default function MePage() {
                 router.push('/settings');
             }
         } catch (error) {
-            showToast.error('ไม่สามารถเข้าสู่ระบบได้ กรุณาลองใหม่อีกครั้ง');
+            showToast.error('ไม่สามารถเข้าสู่ระบบได้ กรุณาลองใหม่อีกครั้ง ' + error.message);
             console.log("error", error)
             router.push('/');
         } finally {
