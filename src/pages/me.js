@@ -48,7 +48,7 @@ export default function MePage() {
                 await handleSocialLogin(user);
                 //res.json()
             }).catch((error) => {
-                showToast.error('ไม่สามารถเข้าสู่ระบบได้ กรุณาลองใหม่อีกครั้ง');
+                showToast.error('ไม่สามารถเข้าสู่ระบบได้ กรุณาลองใหม่อีกครั้ง ' + error.message);
                 console.log("error", error)
                 router.push('/');
             });
