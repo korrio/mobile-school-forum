@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { FaRegComment } from 'react-icons/fa';
 
+import parse from 'html-react-parser';
+
+import { Box, Flex, Icon, IconButton, Text } from "@chakra-ui/react";
 import ReactMarkdownComponent from '@/common/components/ReactMarkdown/components';
 
 import CustomImage from '@/common/components/CustomImage/components';
@@ -20,7 +23,8 @@ import Popover from 'react-bootstrap/Popover';
 import { FaBolt, FaEllipsisH, FaFacebookF, FaHeart, FaRegHeart, FaTwitter } from 'react-icons/fa';
 import { FcAssistant } from 'react-icons/fc';
 
-import { useWeb3Context } from '@/common/context'
+import httpRequest from '@/common/utils/httpRequest';
+import { getCookie } from '@/common/utils/session';
 
 // import createDOMPurify from 'dompurify'
 // import { JSDOM } from 'jsdom'
@@ -29,34 +33,66 @@ import { useWeb3Context } from '@/common/context'
 // const DOMPurify = createDOMPurify(window)
 
 const getShortenUsername = (account) => {
-	if (account.length > 12)
-		return `${account.slice(0, 4)}....${account.slice(
+    if (account.length > 12)
+        return `${account.slice(0, 4)}....${account.slice(
 			account.length - 5,
 			account.length - 1
 		)}`;
-	else
-		return account;
+    else
+        return account;
 };
 
-function removeHtmlTags(str) { 
-    if ((str===null) || (str==='')) 
-        return false; 
+function removeHtmlTags(str) {
+    if ((str === null) || (str === ''))
+        return false;
     else
-        str = str.toString(); 
-          
+        str = str.toString();
+
     // Regular expression to identify HTML tags in 
     // the input string. Replacing the identified 
     // HTML tag with a null string. 
     return str.replace(/<\/?[^>]+(>|$)/g, "");
-} 
+}
 
 const PostCardComponent = ({ post }) => {
-	function rand(min, max) { // min and max included 
-		return Math.floor(Math.random() * (max - min + 1) + min)
-	}
 
-	return (
-		<div className={`card shadow-sm ${style.post_card}`}>
+	const [content,setContent] = useState("")
+
+    function rand(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    const postContent = async (post_slug,user_name) => {
+    	const [resSinglePost, resListComment] = await Promise.all([
+			httpRequest.get({
+				url: `/posts/${post_slug}`,
+				params: {
+					user_name: user_name
+				},
+				token: getCookie('token')
+			}),
+			// httpRequest.get({
+			// 	url: `/comments`,
+			// 	token: getCookie('token', req),
+			// 	params: {
+			// 		post_slug: post_slug,
+			// 		offset: (1 - 1) * process.env.LIMIT_PAGE.LIST_COMMENT,
+			// 		limit: process.env.LIMIT_PAGE.LIST_COMMENT
+			// 	}
+			// })
+		]);
+
+		console.log("the_content",resSinglePost.data.data.content);
+
+		setContent(resSinglePost.data.data.content + "")
+    }
+
+    useEffect(() => {
+    	postContent(post.slug,post.user.user_name);
+  	}, []);
+
+    return (
+        <div className={`card shadow-sm ${style.post_card}`}>
 			<div className="p-3">
 				<div className="mb-2">
 					<div className="d-flex align-items-center">
@@ -192,14 +228,20 @@ const PostCardComponent = ({ post }) => {
 					<div className="mb-1">
 						<p className="card-text mb-0 text-secondary excerpt">
 							<div>
-        { post.excerpt.indexOf('&lt;iframe') !== -1
-            ? (
-                ""
-              )
-            : post.excerpt
-          }
-
-      </div>
+					        { post.excerpt.indexOf('&lt;iframe') !== -1
+					            ? (
+					                ""
+					              )
+					            : post.excerpt
+					          }
+					          
+					          {
+					          	
+					          	parse(content)
+					          	
+					          }
+					          
+					      </div>
 							
 						</p>
 					</div>
@@ -269,7 +311,7 @@ const PostCardComponent = ({ post }) => {
 				</div>
 			</div>
 		</div>
-	);
+    );
 };
 
 export default PostCardComponent;
