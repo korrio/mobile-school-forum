@@ -34,7 +34,7 @@ export async function getServerSideProps({ req, query }) {
 					sort_by: 'published_at',
 					sort_direction: 'desc',
 					offset: (pageNumber(query.page) - 1) * process.env.LIMIT_PAGE.LIST_POST_USER,
-					limit: process.env.LIMIT_PAGE.LIST_POST_USER
+					limit: 100
 				}
 			})
 		]);

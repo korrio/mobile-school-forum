@@ -227,7 +227,7 @@ const PostCardComponent = ({ post }) => {
 					</CustomLink>
 					<div className="mb-1">
 						<p className="card-text mb-0 text-secondary excerpt">
-							<div>
+							<div className="the_content">
 					        { post.excerpt.indexOf('&lt;iframe') !== -1
 					            ? (
 					                ""

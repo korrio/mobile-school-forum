@@ -189,7 +189,9 @@ const SingleUserDashboardComponent = ({ singleUser, listPostUser, listTagUser })
 								</div>
 								<div className="card mb-3 tasks" >
 								  <div className="card-header sb-card-header">Tasks</div>
+								  
 								  <ListPostUserTableComponent listPostUser={listPostUser} />
+								  
 								  
 								</div>
 						  

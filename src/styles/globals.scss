@@ -1,2 +1,8 @@
 @import './custom-bootstrap.scss';
 @import './styles.scss';
+
+@media print {
+	.the_content img {
+		max-width: 100px
+	}
+}
