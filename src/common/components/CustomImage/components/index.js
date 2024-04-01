@@ -20,16 +20,16 @@ const toBase64 = (str) => (typeof window === 'undefined' ? Buffer.from(str).toSt
 const CustomImageComponent = ({ src, alt, className, isBlur = false, ...props }) => {
 	const [imgSrc, setImgSrc] = useState(src);
 	return (props.width <= 40 || props.height <= 40 || !isBlur) ? (
-		<Image {...props} src={src} alt={alt} className={className} onError={() => setImgSrc('/images/image-error.png')} />
+		<Image {...props} src={imgSrc} alt={alt} className={className} onError={() => setImgSrc('/images/user-icon.jpg')} />
 	) : (
 		<Image
 			{...props}
-			src={src}
+			src={imgSrc}
 			alt={alt}
 			className={className}
 			placeholder="blur"
 			blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(props.width, props.height))}`}
-			onError={() => setImgSrc('/images/image-error.png')}
+			onError={() => setImgSrc('/images/user-icon.jpg')}
 		/>
 	);
 }
