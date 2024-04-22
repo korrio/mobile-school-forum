@@ -12,19 +12,20 @@ export default function useUser() {
     useEffect(async () => {
         if (data) {
             setIsLoadingUser(false);
-            if (data.data) {
-                console.log("user:", data.data);
-                console.log("getCookie('token')", getCookie('token'));
-                if (data.data.line_uid) {
-                    const response = await httpRequest.get_student({
-                        line_uid: data.data.line_uid,
-                    });
+            setUser(data)
+            // if (data.data) {
+            //     console.log("user:", data.data);
+            //     console.log("getCookie('token')", getCookie('token'));
+            //     if (data.data.line_uid) {
+            //         const response = await httpRequest.get_student({
+            //             line_uid: data.data.line_uid,
+            //         });
 
-                    console.log("response.data", response.data)
-                    data.data.profile = response.data[0];
-                }
-                setUser(data.data);
-            }
+            //         console.log("response.data", response.data)
+            //         data.data.profile = response.data[0];
+            //     }
+            //     setUser(data.data);
+            // }
         }
     }, [data]);
 
